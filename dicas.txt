@@ -18,7 +18,6 @@ objeto
 objeto
 parte do corpo
 lugar
-droga
 parte do corpo
 animal
 vestimenta
@@ -27,3 +26,15 @@ objeto
 objeto
 fruta
 comida
+área profissional
+área profissional
+parte do corpo
+parte do corpo
+parte do corpo
+parte do corpo
+parte do corpo
+animal
+animal
+animal
+animal
+animal

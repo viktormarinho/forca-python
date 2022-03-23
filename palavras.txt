@@ -18,7 +18,6 @@ fone
 máquina
 perna
 cozinha
-cigarro
 sombrancelha
 guaxinim
 cartola
@@ -27,3 +26,15 @@ caneta
 bandana
 banana
 carne
+medicina
+advocacia
+olho
+cabelo
+braço
+nariz
+boca
+gato
+bezerro
+golfinho
+castor
+arara
