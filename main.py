@@ -60,6 +60,7 @@ def printar_boneco(vidas_l):
         print("|       O ")
         print("|      /|\\ ")
         print("---    / \\ ")
+        print(f"{cores['vermelho']}{fx['negrito']}MAIS UM ERRO E VOCÊ SERÀ ENFORCADO!{limpar}")
 
 
 def play(escolhida, dificuldade, dica):
@@ -149,13 +150,18 @@ def main():
     escolhida = choice(palavras)
     index = palavras.index(escolhida)
     dica = dicas[index]
-    print("-=" * 40)
-    print(f"Bem-vindo ao jogo da {cores['ciano']}{fx['negrito']}Forca{limpar}!")
-    print(f"Escolha sua {cores['vermelho']}dificuldade{limpar}:")
-    print(f"{cores['vermelho']}{fx['negrito']}(1) DIFÍCIL: 60 segundos por jogada{limpar}")
-    print(f"{cores['amarelo_claro']}{fx['negrito']}(2) MÉDIO: 90 segundos por jogada{limpar}")
-    print(f"{cores['verde_claro']}{fx['negrito']}(3) FÁCIL: 120 segundos por jogada{limpar}")
-    dif = int(input("Escolha uma opção: "))
+    dif = 0
+    while dif != 1 and dif != 2 and dif != 3:
+        try:
+            print("-=" * 40)
+            print(f"Bem-vindo ao jogo da {cores['ciano']}{fx['negrito']}Forca{limpar}!")
+            print(f"Escolha sua {cores['vermelho']}dificuldade{limpar}:")
+            print(f"{cores['vermelho']}{fx['negrito']}(1) DIFÍCIL: 60 segundos por jogada{limpar}")
+            print(f"{cores['amarelo_claro']}{fx['negrito']}(2) MÉDIO: 90 segundos por jogada{limpar}")
+            print(f"{cores['verde_claro']}{fx['negrito']}(3) FÁCIL: 120 segundos por jogada{limpar}")
+            dif = int(input("Escolha uma opção: "))
+        except ValueError:
+            print(f"{cores['vermelho']}Digite um número!{limpar}")
     play(escolhida, dif, dica)
 
 
