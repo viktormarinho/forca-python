@@ -142,7 +142,7 @@ def play(escolhida, dificuldade, dica):
         play(escolhida, dificuldade, dica)
 
 
-def main():
+def jogo():
     with open("palavras.txt", "r", encoding="utf-8") as f:
         palavras = [row[0:len(row)-1] for row in f]
     with open("dicas.txt", "r", encoding="utf-8") as f:
@@ -163,6 +163,70 @@ def main():
         except ValueError:
             print(f"{cores['vermelho']}Digite um número!{limpar}")
     play(escolhida, dif, dica)
+
+
+def add():
+    with open("palavras.txt", "a", encoding="utf-8") as f:
+        with open('dicas.txt', 'a', encoding='utf-8') as dicas:
+            print(f"=========={cores['verde_claro']}ADICIONAR{limpar}==========")
+            palavra = dica = ''
+            while True:
+                palavra = input("Digite a palavra a ser adicionada: ").strip().lower()
+                if ' ' not in palavra:
+                    dica = input(f"Digite a dica da palavra '{palavra}': ").strip().lower()
+                    break
+                else:
+                    print(f"{cores['vermelho']}DIGITE UMA PALAVRA VÁLIDA, SEM ESPAÇOS!{limpar}")
+
+            f.write(palavra + '\n')
+            dicas.write(dica + '\n')
+            main()
+
+
+def rmv():
+    with open("palavras.txt", "r", encoding='utf-8') as f:
+        palavras = [row[0:len(row) - 1] for row in f]
+    with open("dicas.txt", 'r', encoding='utf-8') as f:
+        dicas = [row[0:len(row) - 1] for row in f]
+    print(f"=========={cores['vermelho']}REMOVER{limpar}==========")
+    while True:
+        palavra = input("Digite a palavra a ser removida: ").lower().strip()
+        # palavra += '\n'
+        if palavra in palavras:
+            indice = palavras.index(palavra)
+            palavras.pop(indice)
+            dicas.pop(indice)
+            break
+        else:
+            print(f"{cores['vermelho']}PALAVRA NÃO ENCONTRADA NO BANCO DE DADOS...{limpar}")
+    palavrasstr = ''
+    for txt in palavras:
+        palavrasstr += (txt + '\n')
+    dicasstr = ''
+    for txt in dicas:
+        dicasstr += (txt + '\n')
+    with open("palavras.txt", "w", encoding='utf-8') as f:
+        f.write(palavrasstr)
+    with open("dicas.txt", "w", encoding='utf-8') as f:
+        f.write(dicasstr)
+    main()
+
+
+def main():
+    print(f"{cores['verde_claro']}Olá! Deseja jogar, adicionar palavra ao banco ou remover palavra do banco?")
+    print(f"{cores['ciano']}{fx['negrito']}(1) JOGAR")
+    print(f"{cores['verde_claro']}(2) ADICIONAR PALAVRA")
+    print(f"{cores['vermelho']}(3) REMOVER PALAVRA{limpar}")
+    escolha = input("Escolha sua opção: ")
+    if escolha == '1':
+        jogo()
+    elif escolha == '2':
+        add()
+    elif escolha == '3':
+        rmv()
+    else:
+        print("ESCOLHA UMA OPÇÃO VÁLIDA!")
+        main()
 
 
 if __name__ == '__main__':
